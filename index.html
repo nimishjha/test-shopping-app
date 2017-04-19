@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="shoppingApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Title</title>
+<!-- <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700" rel="stylesheet"> -->
+<link rel="stylesheet" type="text/css" href="assets/csslib/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+<base href="/unico/">
+</head>
+<body>
+
+<div id="wrapper" ng-controller="MainController as mainCtrl">
+	<div id="headerWide">
+		<div id="header" class="maxWidthCentered">
+			<div id="cart">
+				<div id="cartLeft">
+					<div id="totalProductsText" class="cartSmallText">
+						TOTAL PRODUCTS
+					</div><!-- end #totalProductsText -->
+					<div id="totalProducts" class="cartLargeText">
+						{{ mainCtrl.cart.items.length }}
+					</div><!-- end #totalProducts -->
+				</div><!-- end #cartLeft -->
+				<div id="cartRight">
+					<div id="totalCostText" class="cartSmallText">
+						TOTAL COST
+					</div><!-- end #totalCostText -->
+					<div id="totalCost" class="cartLargeText">
+						<sup>$</sup>{{ mainCtrl.cart.totalCost | number:2 }}
+					</div><!-- end #totalCost -->
+				</div><!-- end #cartRight -->
+			</div><!-- end #cart -->
+		</div><!-- end #header -->
+	</div><!-- end #headerWide -->
+
+	<div id="toolbarWide">
+		<div id="toolbar" class="maxWidthCentered">
+			<div id="adjustView">
+				<a href="#!cart" ng-class="activeTab == 'cart' ? 'active' : '' "><i class="transitionHover fa fa-th-list"></i></a>
+				<a href="#!/" ng-class="activeTab == 'grid' ? 'active' : '' "><i class="transitionHover fa fa-th"></i></a>
+			</div><!-- end #adjustView -->
+		</div><!-- end #toolbar -->
+	</div><!-- end #toolbarWide -->
+
+	<div id="mainWide" class="maxWidthCentered">
+		<div id="main" ng-view>
+		</div><!-- end #main -->
+	</div><!-- end #mainWide -->
+</div><!-- end #wrapper -->
+
+
+<script type="text/javascript" src="assets/jslib/angular.min.js"></script>
+<script type="text/javascript" src="assets/jslib/angular-route.min.js"></script>
+<script type="text/javascript" src="assets/js/shoppingApp.js"></script>
+
+</body>
+</html>

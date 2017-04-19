@@ -1,0 +1,31 @@
+<form name="cartForm" id="cartForm" novalidate="novalidate">
+	<table class="cartTable">
+		<tr>
+			<th>IMAGE</th>
+			<th>NAME</th>
+			<th>UNIT COST</th>
+			<th>PACK SIZE</th>
+			<th>UNITS IN CARTON</th>
+			<th>NO. OF CARTONS</th>
+			<th>VALUE</th>
+			<th>ACTIONS</th>
+		</tr>
+		<tr ng-repeat="product in mainCtrl.cart.items">
+			<td><img ng-src="{{ product.imageUrl }}" /></td>
+			<td>{{ product.title }}</td>
+			<td>{{ product.unitCost }}</td>
+			<td>{{ product.packSize }}</td>
+			<td>{{ product.unitsInCartons }}</td>
+			<td>
+				<input name="quantity_{{$index}}" type="number" ng-min="1" ng-max="100" integer ng-model="product.quantity" ng-change="mainCtrl.updateCartTotal()" />
+			</td>
+			<td>{{ product.quantity * product.unitsInCartons * product.unitCost | currency }}</td>
+			<td><i class="fa fa-times" ng-click="mainCtrl.deleteItemFromCart(product.id)"></i></td>
+		</tr>
+		<tr ng-repeat-end>
+			<td colspan="8">
+				<div class="formError" ng-show="cartForm.$invalid">Please enter a value between 1 and 100</div>
+			</td>
+		</tr>
+	</table>
+</form>

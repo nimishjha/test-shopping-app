@@ -1,0 +1,81 @@
+		<div id="products">
+
+			<div class="mainProducts">
+				<div class="product" ng-repeat="product in mainCtrl.products">
+					<div class="productAddToCart">
+						<i class="fa fa-plus-circle" ng-click="mainCtrl.addToCart(product.id)"></i>
+					</div><!-- end .productAddToCart -->
+					<div class="productImage">
+						<img ng-src="{{ product.imageUrl }}" />
+					</div><!-- end .productImage -->
+					<div class="productTitle">
+						{{ product.title }}
+					</div><!-- end .productTitle -->
+					<div class="productPrice">
+						<div class="productPriceText">
+							{{ product.unitCost }}
+						</div><!-- end .productPriceText -->
+					</div><!-- end .productPrice -->
+					<div class="productUnitsPerCarton">
+						<div class="productUnitsPerCartonText">
+							{{ product.unitsInCartons }} units per carton
+						</div><!-- end .productUnitsPerCartonText -->
+						<div class="productCartonPrice">
+							({{ product.unitCost * product.unitsInCartons | currency }})
+						</div><!-- end .productCartonPrice -->
+					</div><!-- end .productUnitsPerCarton -->
+					<div class="productExtraInfoSpacer">
+					</div><!-- end .productExtraInfoSpacer -->
+				</div><!-- end .product -->
+			</div><!-- end .mainProducts -->
+
+			<div class="alsoRecommended">
+				<div class="product" ng-repeat="product in mainCtrl.recommendedProducts">
+					<div class="productAddToCart">
+						<i class="fa fa-plus-circle" ng-click="mainCtrl.addToCart(product.id)"></i>
+					</div><!-- end .productAddToCart -->
+					<div class="productImage">
+						<img ng-src="{{ product.imageUrl }}" />
+					</div><!-- end .productImage -->
+					<div class="productTitle">
+						{{ product.title }}
+					</div><!-- end .productTitle -->
+					<div class="productPrice">
+						<div class="productPriceText">
+							{{ product.unitCost | number:2 }}
+						</div><!-- end .productPriceText -->
+					</div><!-- end .productPrice -->
+					<div class="productUnitsPerCarton">
+						<div class="productUnitsPerCartonText">
+							{{ product.unitsInCartons }} units per carton
+						</div><!-- end .productUnitsPerCartonText -->
+						<div class="productCartonPrice">
+							({{ product.unitCost * product.unitsInCartons | currency }})
+						</div><!-- end .productCartonPrice -->
+					</div><!-- end .productUnitsPerCarton -->
+				</div><!-- end .product -->
+
+				<div class="recommendedProductsInformation">
+					<div class="productExtraInfo">
+						<div class="productExtraInfoTitle">
+							{{ mainCtrl.recommendedProducts.length }} items
+						</div><!-- end .productExtraInfoTitle -->
+						<div class="productExtraInfoText">
+							sell well together *
+						</div><!-- end .productExtraInfoText -->
+					</div><!-- end .productExtraInfo -->
+
+					<div class="productExtraInfo">
+						<div class="productExtraInfoTitle">
+							{{ mainCtrl.recommendedProductsPercentage }} %
+						</div><!-- end .productExtraInfoTitle -->
+						<div class="productExtraInfoText">
+							RECOMMENDED *
+						</div><!-- end .productExtraInfoText -->
+					</div><!-- end .productExtraInfo -->
+				</div><!-- end .recommendedProductsInformation -->
+
+			</div><!-- end .alsoRecommended -->
+
+		</div><!-- end #products -->
+
